@@ -1,9 +1,7 @@
-﻿__pycache__/
+__pycache__/
 *.pyc
 *.pyo
 *.pyd
 .env
-exports/
-static/images/
 .DS_Store
 .venv/
