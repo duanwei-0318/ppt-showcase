@@ -1,4 +1,4 @@
-﻿"""
+"""
 PPT Processor - Extract slides and auto-categorize products from PPTX files.
 """
 import os
