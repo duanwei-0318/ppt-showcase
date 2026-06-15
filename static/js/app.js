@@ -1,4 +1,4 @@
-﻿// ===== State =====
+// ===== State =====
 let currentProducts = [];
 let favorites = [];
 let currentCategory = "";
