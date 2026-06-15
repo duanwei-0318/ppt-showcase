@@ -1,0 +1,72 @@
+[
+  {
+    "id": "b238ae80-cde6-45a5-8d5b-93b4d6ffdf9c",
+    "title": "智能降噪耳机 Pro",
+    "description": "¥899   |   旗舰级降噪 · 40小时续航\n分类: 电子产品",
+    "price": 10000.0,
+    "category": "电子产品",
+    "images": [
+      "static/images/slide_0_placeholder.png"
+    ],
+    "source_file": "sample_products.pptx",
+    "slide_index": 0,
+    "created_at": "2026-06-15T19:32:16.273324",
+    "all_text": "智能降噪耳机 Pro ¥899   |   旗舰级降噪 · 40小时续航 分类: 电子产品"
+  },
+  {
+    "id": "58c9e0c2-df3b-4a6c-8c90-1412f4438b81",
+    "title": "北欧简约台灯",
+    "description": "¥259   |   三档色温 · 无频闪护眼\n分类: 家居生活\n采用天然木纹底座，三档色温调节，适合阅读和工作使用。",
+    "price": 259.0,
+    "category": "家居生活",
+    "images": [
+      "static/images/slide_1_placeholder.png"
+    ],
+    "source_file": "sample_products.pptx",
+    "slide_index": 1,
+    "created_at": "2026-06-15T19:32:16.274371",
+    "all_text": "北欧简约台灯 ¥259   |   三档色温 · 无频闪护眼 分类: 家居生活 采用天然木纹底座，三档色温调节，适合阅读和工作使用。"
+  },
+  {
+    "id": "23eae09d-da06-4b62-aa3b-6e77dd330d70",
+    "title": "轻量化运动跑鞋 Air 3",
+    "description": "¥599   |   超轻透气 · 减震回弹\n分类: 运动户外\n鞋面采用Flyknit飞织技术，单只仅重210g。全掌气垫减震，适合长跑和日常训练。",
+    "price": 599.0,
+    "category": "运动户外",
+    "images": [
+      "static/images/slide_2_placeholder.png"
+    ],
+    "source_file": "sample_products.pptx",
+    "slide_index": 2,
+    "created_at": "2026-06-15T19:32:16.274371",
+    "all_text": "轻量化运动跑鞋 Air 3 ¥599   |   超轻透气 · 减震回弹 分类: 运动户外 鞋面采用Flyknit飞织技术，单只仅重210g。全掌气垫减震，适合长跑和日常训练。"
+  },
+  {
+    "id": "2134d140-7d73-4cd7-b927-c85d7f939386",
+    "title": "有机绿茶礼盒",
+    "description": "¥168   |   明前采摘 · 精美礼盒装\n分类: 食品饮料",
+    "price": 168.0,
+    "category": "食品饮料",
+    "images": [
+      "static/images/slide_3_placeholder.png"
+    ],
+    "source_file": "sample_products.pptx",
+    "slide_index": 3,
+    "created_at": "2026-06-15T19:32:16.275324",
+    "all_text": "有机绿茶礼盒 ¥168   |   明前采摘 · 精美礼盒装 分类: 食品饮料"
+  },
+  {
+    "id": "a32638a6-9254-4303-9ff0-09ab9cf9d5f8",
+    "title": "商务双肩背包",
+    "description": "¥349   |   防水耐磨 · 大容量\n分类: 办公用品\n容量28L，可放15.6寸笔记本。背部透气设计，S型肩带减压。",
+    "price": 349.0,
+    "category": "办公用品",
+    "images": [
+      "static/images/slide_4_placeholder.png"
+    ],
+    "source_file": "sample_products.pptx",
+    "slide_index": 4,
+    "created_at": "2026-06-15T19:32:16.275324",
+    "all_text": "商务双肩背包 ¥349   |   防水耐磨 · 大容量 分类: 办公用品 容量28L，可放15.6寸笔记本。背部透气设计，S型肩带减压。"
+  }
+]
