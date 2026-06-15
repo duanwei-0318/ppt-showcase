@@ -85,7 +85,7 @@ async function loadProducts() {
     const products = await api("/api/products?" + params.toString());
     currentProducts = products;
     renderProducts(products);
-    document.getElementById("productCount").textContent = "共 " + products.length + " 个产品";
+
 }
 
 // ===== Render Products =====
@@ -227,6 +227,13 @@ async function clearAllFavorites() {
 function toggleFavPanel() {
     document.getElementById("favPanel").classList.toggle("open");
 }
+document.addEventListener("click", function(e) {
+    var p = document.getElementById("favPanel");
+    var t = document.getElementById("favToggle");
+    if (p.classList.contains("open") && !p.contains(e.target) && !t.contains(e.target)) {
+        p.classList.remove("open");
+    }
+});
 
 async function exportFavorites() {
     const btn = document.getElementById("exportBtn");
