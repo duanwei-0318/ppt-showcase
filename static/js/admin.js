@@ -1,4 +1,4 @@
-﻿// ===== Toast =====
+// ===== Toast =====
 function showToast(msg, type) {
     const t = document.getElementById("toast");
     t.textContent = msg;
