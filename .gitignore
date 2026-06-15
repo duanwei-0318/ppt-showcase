@@ -3,9 +3,7 @@
 *.pyo
 *.pyd
 .env
-uploads/
 exports/
 static/images/
-*.pptx
 .DS_Store
 .venv/
