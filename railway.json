@@ -7,5 +7,9 @@
     "startCommand": "gunicorn app:app --bind 0.0.0.0:$PORT --timeout 120",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
+  },
+  "variables": {
+    "ADMIN_PASSWORD": "admin2024",
+    "SECRET_KEY": "mK7#pQ2$xR9!nL4@wZ6&vJ3^hF8*tY5+"
   }
 }
