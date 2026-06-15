@@ -12,7 +12,7 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.utils import ImageReader
 
 app = Flask(__name__)
-app.secret_key = "ppt-showcase-secret-key-2024"
+app.secret_key = os.environ.get("SECRET_KEY", "ppt-showcase-secret-key-2024")
 app.config["UPLOAD_FOLDER"] = "uploads"
 app.config["MAX_CONTENT_LENGTH"] = 50 * 1024 * 1024
 app.config["ADMIN_PASSWORD"] = os.environ.get("ADMIN_PASSWORD", "admin2024")
