@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品展示系统</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <header class="top-header">
+        <div class="top-header-inner">
+            <div class="top-logo">
+                <div class="logo-icon">◆</div>
+                <div class="logo-text">产品展示系统</div>
+            </div>
+            <div class="top-search">
+                <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b2bec3" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                <input type="text" class="search-input" id="searchInput" placeholder="搜索产品名称或关键词...">
+                <button class="search-clear" id="searchClear" onclick="clearSearch()">×</button>
+            <button class="mobile-filter-btn" id="mobileFilterBtn" onclick="toggleFilterDrawer()" title="筛选条件">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="app-layout">
+        <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleFilterDrawer()"></div>
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-section">
+                <h3>产品分类</h3>
+                <ul class="category-list" id="categoryList">
+                    <li class="active" data-category="">全部</li>
+                </ul>
+            </div>
+            <div class="sidebar-section">
+                <h3>价格区间</h3>
+                <div class="price-range">
+                    <input type="number" id="priceMin" placeholder="最低价" min="0">
+                    <span>—</span>
+                    <input type="number" id="priceMax" placeholder="最高价" min="0">
+                </div>
+                <button class="btn-filter" onclick="applyFilters()">筛选</button>
+            </div>
+            <div class="sidebar-footer">
+                <a class="admin-login-link" onclick="showAdminLogin()">⚙ 管理</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="main-header">
+                <h2>全部产品</h2>
+                <span class="count" id="productCount">共 0 个产品</span>
+            </div>
+            <div class="product-grid" id="productGrid">
+                <div class="empty-state">
+                    <div class="icon">📦</div>
+                    <p>加载中...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <button class="fav-toggle" id="favToggle" onclick="toggleFavPanel()">
+        ♥
+        <span class="badge" id="favBadge">0</span>
+    </button>
+
+    <div class="fav-panel" id="favPanel">
+        <div class="fav-panel-header">
+            <h3>收藏夹</h3>
+            <button class="fav-panel-close" onclick="toggleFavPanel()">×</button>
+        </div>
+        <div class="fav-list" id="favList">
+            <div class="empty-state" style="padding: 30px 20px;">
+                <p>暂无收藏产品</p>
+            </div>
+        </div>
+        <div class="fav-panel-footer">
+            <button class="btn-clear-fav" id="clearFavBtn" onclick="clearAllFavorites()" disabled>清空全部</button>
+            <button class="btn-export" id="exportBtn" onclick="exportFavorites()">导出为 PDF</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="adminLoginModal">
+        <div class="modal" style="max-width: 380px;">
+            <div class="modal-header">
+                <h3>管理员登录</h3>
+                <button class="modal-close" onclick="hideAdminLogin()">×</button>
+            </div>
+            <div class="modal-body" style="padding: 24px 20px;">
+                <input type="password" id="adminPassword" placeholder="请输入管理员密码" style="width:100%;padding:10px 12px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;outline:none;margin-bottom:12px;" onkeydown="if(event.key==='Enter')doAdminLogin()">
+                <button onclick="doAdminLogin()" style="width:100%;padding:10px;background:#0984e3;color:#fff;border:none;border-radius:8px;font-size:14px;cursor:pointer;">登录</button>
+                <div id="adminLoginError" style="color:#e17055;font-size:12px;margin-top:8px;display:none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="productModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>产品详情</h3>
+                <button class="modal-close" onclick="closeProductModal()">×</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
