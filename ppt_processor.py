@@ -88,13 +88,14 @@ def generate_placeholder(output_dir, slide_index, title):
         "食品饮料": (0, 184, 148), "运动户外": (0, 206, 201), "办公用品": (116, 185, 255),
         "美妆护肤": (253, 121, 168), "图书教育": (162, 155, 254),
     }
-    r, g, b = cat_colors.get(title[:4], 45, 52, 54)
+    clr = cat_colors.get(title[:4], (45, 52, 54))
+    r, g, b = clr
     img = Image.new("RGB", (400, 300), (r, g, b))
     draw = ImageDraw.Draw(img)
     # Draw centered diamond shape
     cx, cy = 200, 120
     s = 40
-    draw.polygon([(cx, cy-s), (cx+s, cy), (cx, cy+s), (cx-s, cy)], fill=(255, 255, 255, 40))
+    draw.polygon([(cx, cy-s), (cx+s, cy), (cx, cy+s), (cx-s, cy)], fill=(255, 255, 255))
     # Draw product icon
     draw.text((cx - 12, cy - 10), "◆", fill=(255, 255, 255, 200))
     # Draw title text
