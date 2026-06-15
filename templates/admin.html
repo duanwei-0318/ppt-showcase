@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后台管理 - 产品展示系统</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <header class="top-header">
+        <div class="top-header-inner">
+            <div class="top-logo">
+                <div class="logo-icon">◆</div>
+                <div class="logo-text">产品展示系统</div>
+            </div>
+            <div style="margin-left:auto;display:flex;gap:12px;align-items:center;">
+                <a href="/" style="font-size:13px;color:#636e72;padding:6px 12px;border-radius:6px;">产品浏览</a>
+                <span style="font-size:13px;color:#0984e3;padding:6px 12px;font-weight:600;">后台管理</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="admin-layout" id="adminContent" style="display:none;">
+        <section class="admin-section">
+            <h2>上传 PPT</h2>
+            <div class="upload-zone" id="uploadZone">
+                <div class="icon">📤</div>
+                <p>点击或拖拽 PPTX 文件到此处</p>
+                <div class="hint">支持 .pptx 格式，最大 50MB</div>
+            </div>
+            <input type="file" id="fileInput" accept=".pptx" style="display:none">
+            <div class="file-status" id="fileStatus">
+                <div class="name" id="fileName"></div>
+                <div class="size" id="fileSize"></div>
+                <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+            </div>
+            <button class="btn-upload-submit" id="uploadBtn" onclick="uploadFile()">开始上传并解析</button>
+        </section>
+
+        <section class="admin-section">
+            <h2>分类管理</h2>
+            <div style="display:flex;gap:8px;margin-bottom:16px;">
+                <input type="text" id="newCategoryName" placeholder="分类名称" style="flex:1;padding:7px 10px;border:1px solid #e0e0e0;border-radius:6px;font-size:13px;">
+                <input type="text" id="newCategoryDesc" placeholder="分类描述（选填）" style="flex:1;padding:7px 10px;border:1px solid #e0e0e0;border-radius:6px;font-size:13px;">
+                <button class="btn-sm primary" onclick="addCategory()" style="padding:7px 16px;">添加</button>
+            </div>
+            <table class="admin-table"><thead><tr><th>分类名称</th><th>描述</th><th>操作</th></tr></thead><tbody id="categoryTableBody"></tbody></table>
+        </section>
+
+        <section class="admin-section">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+                <h2 style="margin:0;">产品管理</h2>
+                <span id="totalCount" style="font-size:12px;color:#b2bec3;"></span>
+            </div>
+            <div style="display:flex;gap:8px;margin-bottom:12px;">
+                <input type="text" id="adminSearchInput" placeholder="搜索产品名称..." style="flex:1;padding:6px 10px;border:1px solid #e0e0e0;border-radius:6px;font-size:12px;outline:none;min-width:0;">
+                <select id="adminCategoryFilter" style="padding:6px 10px;border:1px solid #e0e0e0;border-radius:6px;font-size:12px;outline:none;background:#fff;min-width:110px;">
+                    <option value="">全部分类</option>
+                </select>
+            </div>
+            <div style="max-height:520px;overflow-y:auto;border:1px solid #f0f0f0;border-radius:6px;">
+                <table class="admin-table admin-table-compact">
+                    <thead><tr><th>产品名称</th><th>分类</th><th>价格</th><th>来源</th><th style="width:120px;">操作</th></tr></thead>
+                    <tbody id="productTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <div class="admin-layout" id="adminLoginForm" style="display:flex;align-items:center;justify-content:center;min-height:calc(100vh - 60px);">
+        <div style="background:#fff;border-radius:12px;padding:40px;box-shadow:0 4px 20px rgba(0,0,0,0.06);width:100%;max-width:400px;text-align:center;">
+            <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#0984e3,#6c5ce7);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 16px;">◆</div>
+            <h2 style="font-size:20px;margin-bottom:4px;">管理员登录</h2>
+            <p style="font-size:13px;color:#b2bec3;margin-bottom:24px;">请输入密码进入后台管理</p>
+            <input type="password" id="adminPassword" placeholder="管理员密码" style="width:100%;padding:12px 14px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;outline:none;margin-bottom:12px;" onkeydown="if(event.key==='Enter')doAdminLogin()">
+            <button onclick="doAdminLogin()" style="width:100%;padding:12px;background:#0984e3;color:#fff;border:none;border-radius:8px;font-size:14px;cursor:pointer;font-weight:500;">登 录</button>
+            <div id="adminLoginError" style="color:#e17055;font-size:13px;margin-top:8px;display:none;"></div>
+        </div>
+    </div>
+
+    <!-- Edit Product Modal -->
+    <div class="modal-overlay" id="editModal">
+        <div class="modal" style="max-width:450px;">
+            <div class="modal-header">
+                <h3>编辑产品</h3>
+                <button class="modal-close" onclick="closeEditModal()">×</button>
+            </div>
+            <div class="modal-body" style="padding:24px 20px;">
+                <input type="hidden" id="editProductId">
+                <div style="margin-bottom:16px;">
+                    <label style="font-size:12px;font-weight:600;color:#636e72;display:block;margin-bottom:4px;">产品名称</label>
+                    <input type="text" id="editTitle" readonly style="width:100%;padding:9px 12px;border:1px solid #eee;border-radius:8px;font-size:13px;background:#f8f9fa;color:#636e72;">
+                </div>
+                <div style="margin-bottom:16px;">
+                    <label style="font-size:12px;font-weight:600;color:#636e72;display:block;margin-bottom:4px;">分类</label>
+                    <select id="editCategory" style="width:100%;padding:9px 12px;border:1px solid #e0e0e0;border-radius:8px;font-size:13px;outline:none;background:#fff;"></select>
+                </div>
+                <div style="margin-bottom:20px;">
+                    <label style="font-size:12px;font-weight:600;color:#636e72;display:block;margin-bottom:4px;">价格 (元)</label>
+                    <input type="number" id="editPrice" step="0.01" min="0" placeholder="0.00" style="width:100%;padding:9px 12px;border:1px solid #e0e0e0;border-radius:8px;font-size:13px;outline:none;">
+                </div>
+                <div style="display:flex;gap:8px;">
+                    <button onclick="closeEditModal()" style="flex:1;padding:9px;border:1px solid #e0e0e0;border-radius:8px;font-size:13px;cursor:pointer;background:#fff;color:#636e72;">取消</button>
+                    <button onclick="saveEdit()" style="flex:1;padding:9px;background:#0984e3;color:#fff;border:none;border-radius:8px;font-size:13px;cursor:pointer;font-weight:500;">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/admin.js"></script>
+</body>
+</html>
