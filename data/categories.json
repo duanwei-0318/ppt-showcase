@@ -1,0 +1,32 @@
+[
+  {
+    "id": "f9aa3b27-67a7-4d05-972f-55e864511f29",
+    "name": "食品饮料",
+    "description": "从 sample_products.pptx 自动创建",
+    "created_at": "2026-06-15T19:32:16.277457"
+  },
+  {
+    "id": "0a77e6d5-41ae-4ef1-8ae3-6654798bba60",
+    "name": "家居生活",
+    "description": "从 sample_products.pptx 自动创建",
+    "created_at": "2026-06-15T19:32:16.277457"
+  },
+  {
+    "id": "141563fd-9f08-4c26-b3f4-56b0aed29359",
+    "name": "办公用品",
+    "description": "从 sample_products.pptx 自动创建",
+    "created_at": "2026-06-15T19:32:16.277457"
+  },
+  {
+    "id": "fa0e33b2-ab75-4673-b12b-5b27b628d853",
+    "name": "运动户外",
+    "description": "从 sample_products.pptx 自动创建",
+    "created_at": "2026-06-15T19:32:16.277457"
+  },
+  {
+    "id": "eabbe304-31cc-41f2-9c49-a3439056fd0a",
+    "name": "电子产品",
+    "description": "从 sample_products.pptx 自动创建",
+    "created_at": "2026-06-15T19:32:16.277457"
+  }
+]
